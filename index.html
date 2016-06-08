@@ -1,84 +1,41 @@
-
 <!doctype html>
 <html>
-  <head>
-    <title>SEGO!</title>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src='lib/sketch.js'></script>
-    <link href='http://fonts.googleapis.com/css?family=Yellowtail|Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'/>
-    
-    <style type='text/css'>
-      body { font-family: "Open Sans", sans-serif; color: #444; background-color: #1c1c1c;}
-      h1, h2, h3, h4 { font-family: Yellowtail; font-weight: normal; color: #06a; }
+<head>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://rawgit.com/intridea/sketch.js/gh-pages/lib/sketch.js"></script>    
+<style>
+    body{ background-color: ivory; }
+    #wrapper{positon:relative;}
+    #bk,#myCanvas{position:absolute;}
+</style>
+<script>
+$(function(){
 
-      #wrapper { width: 800px; margin: 0 auto; }
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
 
-      header { text-align: center; }
-      header h1 { font-size: 46px; text-align: center; margin: 15px 10px; }
+    $('#myCanvas').sketch({ defaultColor: "red" });
 
-      article h1 { font-size: 26px; margin: 0 0 15px; }
+    $('#download').click(function() {
+          var img=document.getElementById('bk');
+          ctx.globalCompositeOperation='destination-over';
+          ctx.drawImage(bk, 0, 0);
+          ctx.globalCompositeOperation='source-over';
+          var html="<p>Right-click on image below and Save-Picture-As</p>";
+          html+="<img src='"+c.toDataURL()+"' alt='from canvas'/>";
+          var tab=window.open();
+          tab.document.write(html);
+    });
 
-      article canvas {
-        width: 800px;
-        height: 800px;
-      }
-
-      code { background: #cff; }
-
-      .tools { margin-bottom: 10px; }
-      .tools a {
-        border: 1px solid black; height: 30px; line-height: 30px; padding: 0 10px; vertical-align: middle; text-align: center; text-decoration: none; display: inline-block; color: black; font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
+}); // end $(function(){});
+</script>
+</head>
+<body>
+    <h4>Drag to sketch on the map.</h4>
+    <button id=download>Download</button>
     <div id='wrapper'>
-      <header>
-        <img src="http://i.imgur.com/WwQVIyR.png" height="300px" width="300px"/>
-      </header>
-
-      <article class='info'>
-        
-      </article>
-
-      <article class='example'>
-      
-        <div class='demo' id='colors_demo'>
-          <canvas id='colors_sketch' width='800' height='800' style='background: url(http://i.imgur.com/eo137no.jpg) no-repeat center center;'></canvas>
-          <div class='tools'>
-            <a href='#colors_sketch' data-download='png' style='float: right; width: 100px;'>Download</a>
-          </div>
-          <script type='text/javascript'>
-            $(function() {
-              $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
-                $('#colors_demo .tools').append("<a href='#colors_sketch' data-color='" + this + "' style='width: 10px; background: " + this + ";'></a> ");
-              });
-              $.each([3, 5, 10, 15], function() {
-                $('#colors_demo .tools').append("<a href='#colors_sketch' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
-              });
-              $('#colors_sketch').sketch();
-            });
-          </script>
-        </div>
-
-      </article>
-
-      <article class='example' id='tools_demo'>
-
-
-      </article>
-
-      <article class='info'>
-
-        
-        
-      </article>
-
+        <img crossOrigin='anonymous' id=bk src='https://dl.dropboxusercontent.com/u/139992952/multple/googlemap1.png'>
+        <canvas id="myCanvas" width=459 height=459></canvas>
     </div>
- 
-  </body>
+</body>
 </html>
-
-
-
-
