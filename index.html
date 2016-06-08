@@ -4,7 +4,7 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://rawgit.com/intridea/sketch.js/gh-pages/lib/sketch.js"></script>    
 <style>
-    body{ background-color: ivory; }
+    body{ background-color: black; }
     #wrapper{width: 800px; margin: 0 auto;}
     #bk,#myCanvas{position:absolute;}
 </style>
@@ -21,7 +21,7 @@ $(function(){
           ctx.globalCompositeOperation='destination-over';
           ctx.drawImage(bk, 0, 0);
           ctx.globalCompositeOperation='source-over';
-          var html="<p>Right-click on image below and Save-Picture-As</p>";
+          var html="";
           html+="<img src='"+c.toDataURL()+"' alt='from canvas'/>";
           var tab=window.open();
           tab.document.write(html);
