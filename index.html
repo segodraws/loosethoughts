@@ -49,7 +49,12 @@
           <div class='tools'>
             <a href='#colors_sketch' + img src=http://i.imgur.com/lqnRp2t.jpg; data-download='jpg' style='float: right; width: 200px;'>Letcha Thoughts Loose!</a>
           </div>
-          <script type='text/javascript'>
+          <script 
+           
+           var c = document.getElementById("#colors_sketch");
+          var ctx = c.getContext("2d");
+          
+        type='text/javascript'>
             $(function() {
               $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
                 $('#colors_demo .tools').append("<a href='#colors_sketch' data-color='" + this + "' style='width: 10px; background: " + this + ";'></a> ");
@@ -57,7 +62,8 @@
               $.each([3, 5, 10, 15], function() {
                 $('#colors_demo .tools').append("<a href='#colors_sketch' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
               });
-              $('#colors_sketch').sketch();
+              $('#colors_sketch').sketch()
+              ctx.globalCompositeOperation = "destination-over";
             });
             
             
