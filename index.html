@@ -48,8 +48,10 @@
         <div class='demo' id='colors_demo'>
           <canvas id='colors_sketch' width='800px' height='800px' style='background: url(http://i.imgur.com/lqnRp2t.jpg) no-repeat center center;'></canvas>
           <div class='tools'>
+            <button onclick="javascript:clearArea();return false;">Clear Area</button>
+        Line width : <select id="selWidth">
           </div>
-          <script 
+          <script
            
            var c = document.getElementById("#colors_sketch");
           var ctx = c.getContext("2d");
@@ -67,6 +69,10 @@
               ctx.globalCompositeOperation = "destination-over";
             });
            
+           function clearArea() {
+    // Use the identity matrix while clearing the canvas
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
             
           </script>
         </div>
